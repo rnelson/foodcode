@@ -1,4 +1,4 @@
-task :default => [:xml] do
+task :default do
   require './lib/parser'
   file = 'data/UCM374510.xml'
   outdir = 'data/'
