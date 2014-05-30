@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'colorize'
+require 'json'
 
 class FoodCodeParser
   def self.parse(xml_filename, outdir)
@@ -17,8 +18,15 @@ class FoodCodeParser
         page_text += text.content
       }
 
-      File.open(outdir + '/' + page_number.to_s + '.json', 'w+') {|f|
+      File.open(outdir + '/' + page_number.to_s + '.txt', 'w+') {|f|
         f.puts(page_text)
+      }
+      File.open(outdir + '/' + page_number.to_s + '.json', 'w+') {|f|
+        obj = {
+            'pageNumber' => page_number,
+            'text' => page_text
+        }
+        f.puts(obj.to_json)
       }
       page_number += 1
     }
