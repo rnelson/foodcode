@@ -1,7 +1,13 @@
 task :default do
-  require './lib/parser'
   file = 'data/UCM374510.xml'
   outdir = 'data/'
+
+  # If we don't have the XML file, grab it
+  if not FileTest.exists?(file)
+    Rake::Task["xml"].invoke
+  end
+
+  require './lib/parser'
   FoodCodeParser.parse file, outdir
 end
 
