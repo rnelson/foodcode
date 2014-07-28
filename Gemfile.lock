@@ -4,7 +4,7 @@ GEM
     colorize (0.7.3)
     json (1.8.1)
     mini_portile (0.6.0)
-    nokogiri (1.6.2.1)
+    nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     stopwords (0.2)
 
